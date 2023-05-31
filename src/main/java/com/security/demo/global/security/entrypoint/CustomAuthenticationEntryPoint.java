@@ -1,4 +1,4 @@
-package com.security.demo.global.security;
+package com.security.demo.global.security.entrypoint;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.security.demo.global.exception.ErrorDTO;

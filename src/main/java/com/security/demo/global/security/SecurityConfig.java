@@ -1,6 +1,6 @@
-package com.security.demo.global.security.entrypoint;
+package com.security.demo.global.security;
 
-import com.security.demo.global.security.CustomAuthenticationEntryPoint;
+import com.security.demo.global.security.entrypoint.CustomAuthenticationEntryPoint;
 import com.security.demo.global.security.filter.CustomLoginFilter;
 import com.security.demo.global.security.handler.CustomLoginFailureHandler;
 import com.security.demo.global.security.handler.CustomLoginSuccessHandler;
@@ -58,9 +58,8 @@ public class SecurityConfig {
             .authenticationEntryPoint(entryPoint);
 
         http.authorizeRequests()
-            .antMatchers("/").permitAll() // 메인 페이지 열어줌
-            .antMatchers("/member/sign-up", "/member/login").permitAll() // 회원가입, 로그인 페이지는 열어줌.
-            .antMatchers("/member/test").permitAll()
+            .antMatchers("/", "/test", "/member/sign-up", "/member/login").permitAll()
+            .antMatchers("/admin").hasRole("ADMIN")
             .anyRequest().authenticated(); //나머지는 인증 검사 진행.
 
         http.formLogin()

@@ -46,4 +46,17 @@ public class Role {
         this.roleName = roleName;
         this.roleDesc = roleDesc;
     }
+
+    public void addMember(Member member) {
+        this.memberRoles.add(new MemberRole(this, member));
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+            "id=" + id +
+            ", roleName='" + roleName + '\'' +
+            ", roleDesc='" + roleDesc + '\'' +
+            '}';
+    }
 }

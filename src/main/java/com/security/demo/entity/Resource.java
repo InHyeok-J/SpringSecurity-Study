@@ -54,4 +54,15 @@ public class Resource {
         this.orderNum = orderNum;
         this.resourceType = resourceType;
     }
+
+    @Override
+    public String toString() {
+        return "Resource{" +
+            "id=" + id +
+            ", resourceName='" + resourceName + '\'' +
+            ", httpMethod='" + httpMethod + '\'' +
+            ", orderNum=" + orderNum +
+            ", resourceType='" + resourceType + '\'' +
+            '}';
+    }
 }

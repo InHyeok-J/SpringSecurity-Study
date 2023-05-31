@@ -50,4 +50,18 @@ public class Member {
         this.password = password;
     }
 
+    public void addRole(Role role) {
+        this.memberRoles.add(new MemberRole(role, this));
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+            "id=" + id +
+            ", userId='" + userId + '\'' +
+            ", password='" + password + '\'' +
+            ", email='" + email + '\'' +
+            ", name='" + name + '\'' +
+            '}';
+    }
 }

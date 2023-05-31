@@ -10,13 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "member_roles")
+@Table(name = "member_roles",
+    uniqueConstraints = {
+        @UniqueConstraint(name = "member_role_unique", columnNames = {"role_id", "member_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -38,5 +42,14 @@ public class MemberRole {
     public MemberRole(Role role, Member member) {
         this.role = role;
         this.member = member;
+    }
+
+    @Override
+    public String toString() {
+        return "MemberRole{" +
+            "id=" + id +
+            ", role=" + role +
+            ", member=" + member +
+            '}';
     }
 }

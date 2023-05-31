@@ -42,4 +42,13 @@ public class RoleAccess {
         this.role = role;
         this.resource = resource;
     }
+
+    @Override
+    public String toString() {
+        return "RoleAccess{" +
+            "id=" + id +
+            ", role=" + role +
+            ", resource=" + resource +
+            '}';
+    }
 }
