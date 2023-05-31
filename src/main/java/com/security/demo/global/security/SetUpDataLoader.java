@@ -1,6 +1,7 @@
 package com.security.demo.global.security;
 
 import com.security.demo.entity.Member;
+import com.security.demo.entity.Resource;
 import com.security.demo.entity.Role;
 import com.security.demo.repository.MemberRepository;
 import com.security.demo.repository.ResourceRepository;
@@ -31,6 +32,29 @@ public class SetUpDataLoader implements ApplicationListener<ContextRefreshedEven
 
         //ADMIN SETUP
         checkAdmin();
+
+        addAdminRoleResource();
+    }
+
+    private void addAdminRoleResource() {
+        Role role_admin = roleRepository.findByRoleName("ROLE_ADMIN")
+            .orElseThrow(() -> new IllegalStateException(""));
+        createResourceIfNotFound(role_admin, "/admin/**", "", "url");
+    }
+
+    private void createResourceIfNotFound(Role role, String resourceName, String httpMethod,
+        String type) {
+        Resource resource = resourceRepository.findByResourceNameAndHttpMethod(resourceName,
+                httpMethod)
+            .orElseGet(() ->
+                Resource.builder()
+                    .httpMethod(httpMethod)
+                    .resourceName(resourceName)
+                    .resourceType(type)
+                    .orderNum(1)
+                    .build());
+        resource.addRole(role);
+        resourceRepository.save(resource);
     }
 
     private void checkAdmin() {

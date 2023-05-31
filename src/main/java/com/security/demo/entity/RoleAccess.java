@@ -1,6 +1,7 @@
 package com.security.demo.entity;
 
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,5 +51,28 @@ public class RoleAccess {
             ", role=" + role +
             ", resource=" + resource +
             '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RoleAccess that = (RoleAccess) o;
+        if(id == null | this.id == null){ // 둘다 null이면
+            return role.getId().equals(that.role.getId()) && resource.getId().equals(that.resource.getId());
+        }
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        final int PRIME = 31;
+        int result = 1;
+        result = (int) (PRIME * result + this.role.getId() + this.resource.getId());
+        return result;
     }
 }

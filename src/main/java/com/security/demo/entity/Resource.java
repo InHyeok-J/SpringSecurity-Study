@@ -65,4 +65,10 @@ public class Resource {
             ", resourceType='" + resourceType + '\'' +
             '}';
     }
+
+    public void addRole(Role role) {
+        RoleAccess roleAccess = new RoleAccess(role, this);
+
+        this.canAccessRoles.add(roleAccess);
+    }
 }
