@@ -1,16 +1,16 @@
 package com.security.demo.member.service;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.security.demo.exception.DuplicateResourceException;
-import com.security.demo.member.controller.dto.SignUpMemberRequest;
-import com.security.demo.member.entity.Member;
-import com.security.demo.member.repository.MemberRepository;
+import com.security.demo.global.exception.DuplicateResourceException;
+import com.security.demo.controller.dto.SignUpMemberRequest;
+import com.security.demo.entity.Member;
+import com.security.demo.repository.MemberRepository;
+import com.security.demo.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

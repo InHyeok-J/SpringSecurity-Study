@@ -4,7 +4,6 @@ package com.security.demo.controller.dto;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.security.demo.member.controller.dto.SignUpMemberRequest;
 import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
